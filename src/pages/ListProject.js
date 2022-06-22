@@ -1,7 +1,15 @@
 import React, {useState,useEffect } from 'react'
 import '../styles/List-project.css'
+import { useNavigate } from 'react-router-dom';
 
 const ListProject = () => {
+  const navigate = useNavigate();
+  const btn1_Click = () => {
+    navigate('/create-project');
+  };
+  const btn2_Click = () => {
+    navigate('/info-project');
+  };
   const [data, setData] = useState([{}]);
 
  useEffect(() => {
@@ -18,7 +26,7 @@ const ListProject = () => {
   return (
     <div>
       <div>
-        <button className="new-project">New Projects</button>
+        <button className="new-project" onClick={btn1_Click}>New Projects</button>
       </div>
         <ul className='list-project'>
             {data.map((item, index) => {
@@ -26,8 +34,9 @@ const ListProject = () => {
                 <li key={index} className="list">
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
-                <button className='copy'>Copier</button>
-                <button className='delete'>supprimer</button>
+                  <button className='display' onClick={btn2_Click}>Afficher plus</button>
+                  <button className='copy'>Dupliquer</button>
+                  <button className='delete'>supprimer</button>
                 </li>
               );
             })}

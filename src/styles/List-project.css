@@ -44,6 +44,16 @@
     display: inline-block;
     font-size: 7px;
   }
+  .display   {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 7px;
+  }
   .delete    {
     background-color: #f44336;
     border: none;
