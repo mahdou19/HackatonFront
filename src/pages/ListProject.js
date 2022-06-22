@@ -16,6 +16,19 @@ const ListProject = () => {
     setIsOpen(!isOpen)
   }
 
+  const deleteProject = (projectId) => {
+    fetch(`/project/${projectId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        fetch("/projects")
+          .then((response) => response.json())
+          .then(({ projects }) => {
+            setData(projects)
+          })
+      })
+  }
+
   const exportProject = (projectId) => {
     fetch(`/project/${projectId}/export`)
       .then((response) => response.json())
@@ -28,7 +41,6 @@ const ListProject = () => {
 
         link.click();
       })
-
   }
 
   useEffect(() => {
@@ -55,7 +67,7 @@ const ListProject = () => {
               <li>Name project : {item.name}</li>
               <button className='display' onClick={togglePopup}>Afficher plus</button>
               <button className='copy'>Dupliquer</button>
-              <button className='delete'>supprimer</button>
+              <button className='delete' onClick={() => deleteProject(item.id)}>supprimer</button>
               <button className='export' onClick={() => exportProject(item.id)}>Extraire</button>
             </li>
           );
