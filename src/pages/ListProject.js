@@ -16,6 +16,19 @@ const ListProject = () => {
     setIsOpen(!isOpen)
 }
 
+
+const duclicate =()=>{
+
+fetch ("/project/${id}/copy").then(
+res=>res.json()
+).then(
+  data =>{
+  data =>data.projects
+  setData(data)
+}
+)
+}
+
  useEffect(() => {
   fetch ("/projects").then(
     res => res.json()
@@ -39,7 +52,7 @@ const ListProject = () => {
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
                   <button className='display'  onClick={togglePopup}>Afficher plus</button>
-                  <button className='copy'>Dupliquer</button>
+                  <button className='copy' onClick={duclicate}>Dupliquer</button>
                   <button className='delete'>supprimer</button>
                 </li>
               );
