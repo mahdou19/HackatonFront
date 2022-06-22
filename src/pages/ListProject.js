@@ -62,28 +62,26 @@ const ListProject = () => {
       <div>
         <button className="new-project" onClick={btn1_Click}>New Projects</button>
       </div>
-      <ul className='list-project'>
-        {data.map((item, index) => {
-          return (
-            <li key={index} className="list">
-              <li>Id : #{item.id}</li>
-              <li>Name project : {item.name}</li>
-              <button className='display' onClick={togglePopup}>Afficher plus</button>
-              <button className='copy'>Dupliquer</button>
-              <button className='delete' onClick={() => deleteProject(item.id)}>supprimer</button>
-              <button className='export' onClick={() => exportProject(item.id)}>Extraire</button>
-            </li>
-          );
-        })}
-        {isOpen && (
-          <PopUp
-            id={selectedId}
-            handleClose={togglePopup}
-            isOpen={isOpen}
-          />
-        )}
-      </ul>
-                   
+        <ul className='list-project'>
+            {data.map((item, index) => {
+              return (
+                <li key={index} className="list">
+                  <li>Id : #{item.id}</li>
+                  <li>Name project : {item.name}</li>
+                  <button className='display'  onClick={() => togglePopup(item.id)}>Afficher plus</button>
+                  <button className='copy'>Dupliquer</button>
+                  <button className='delete'>supprimer</button>
+                </li>
+              );
+            })}
+             {isOpen && (
+                <PopUp
+                    id={selectedId}
+                    handleClose={togglePopup}
+                    isOpen={isOpen}
+                />
+            )}
+          </ul>
     </div>
   )
 }
