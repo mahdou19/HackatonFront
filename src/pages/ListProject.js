@@ -1,4 +1,5 @@
 import React, {useState,useEffect } from 'react'
+import '../styles/List-project.css'
 
 const ListProject = () => {
   const [data, setData] = useState([{}]);
@@ -16,11 +17,13 @@ const ListProject = () => {
  }, []);
   return (
     <div>
-        <ul >
+        <ul className='list-project'>
             {data.map((item, index) => {
               return (
-                <li key={index} className={item}>
+                <li key={index} className="list">
                 {item.name}
+                <button className='copy'>Copier</button>
+                <button className='delete'>supprimer</button>
                 </li>
               );
             })}
