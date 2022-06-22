@@ -1,23 +1,21 @@
-import React, {useState,useEffect } from 'react'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './components/NavBar';
+import Home from './pages/Home';
+import ListProject from './pages/ListProject';
 
-const App = () => {
-  const [data, setData] = useState([{}]);
 
- useEffect(() => {
-  fetch ("/projects").then(
-    res => res.json()
-  ).then(
-    data => {
-      setData(data)
-      console.log(data);
-    }
-  )
- }, []);
+const index = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<ListProject />} />
+        
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default index;
