@@ -17,6 +17,9 @@ const ListProject = () => {
  }, []);
   return (
     <div>
+      <div>
+        <button className="new-project">New Projects</button>
+      </div>
         <ul className='list-project'>
             {data.map((item, index) => {
               return (

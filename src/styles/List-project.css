@@ -3,24 +3,18 @@
     padding: O;
 }
 .list-project {
-  
-    margin : 10px 0;
     text-align: center;
     
   }
   .list{
     height: 50px;
-    margin : 10px 0;
     border-width: thick;
     list-style-position:inside;
     border: 1px solid black;
   }
   ul {
-   
-    
     list-style: none;
-    
-    padding: 30px;
+    padding: 10px;
     font-size: small;
     font-family: "Tahoma", Arial, sans-serif;
     text-align: left;
@@ -28,6 +22,15 @@
   }
   li{
     
+  }
+  button{
+    cursor: pointer;
+
+
+    margin: 5px 2px;
+    justify-content: space-between;
+  align-items: center;
+  text-align: center;
   }
   
    .copy {
@@ -49,4 +52,19 @@
     text-decoration: none;
     display: inline-block;
     font-size: 7px;
+    align-items: center;
+  text-align: center;
+    
+  }
+  .new-project    {
+    margin: 30px;
+
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+
+    font-size: 7px;
+    margin-left: 85%;
   }
