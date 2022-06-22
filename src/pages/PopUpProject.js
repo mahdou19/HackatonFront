@@ -2,26 +2,24 @@ import React, { useState, useEffect }  from "react";
 import '../styles/Popup.css'
 
 function PopUp({id, handleClose}){
+    
     const [data, setData] = useState([{}]);
    
 
-   useEffect(() => {
-    fetch (`/project/${id}`).then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-          console.log(data);
-      }
-    )
-   }, []);
+    useEffect(() => {
+        fetch (`/project/${id}`).then( 
+          res => res.json()
+        ).then(
+          data => { 
+            setData(data)
+            console.log(data);    
+          }
+        )
+       }, []);
     
     return(
         <div>
-          
-            <div>
-                
-                   
+            <div> 
                     <div className="main">
                         <div className="popup">
                             <div className="popup-header">
@@ -32,7 +30,7 @@ function PopUp({id, handleClose}){
                             <ul className='list-project'>
                                 <li> Name creator : {data.creator}</li>
                                 <li> Description : {data.description}</li>
-                                <ul className='list-project'><h2>Jobs</h2></ul>
+                                {/* <ul className='list-project'><h2>Jobs</h2>
                                 {data?.jobs?.map((item, index) => {
                                     return (
                                         <li className='index'>
@@ -41,14 +39,9 @@ function PopUp({id, handleClose}){
                                             
                                         </li>
                                         
-                                    )})}
-
-
-                                
-                            </ul>
-                                                    
-                                   
-                                
+                                    )})}    
+                                    </ul> */}
+                            </ul>         
                             </div>
                         </div>
                     </div>

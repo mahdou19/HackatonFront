@@ -15,6 +15,7 @@ const ListProject = () => {
   
 
   const togglePopup = (id) => {
+   
     setSelectedId(id)
     setIsOpen(!isOpen)
   }
@@ -67,7 +68,7 @@ res=>res.json()
     data => {
         data = data.projects
         setData(data)
-        console.log(data);
+        
       }
     )
   }, []);
@@ -78,13 +79,15 @@ res=>res.json()
       </div>
         <ul className='list-project'>
             {data.map((item, index) => {
+             
               return (
                 <li key={index} className="list">
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
-                  <button className='display'  onClick={togglePopup}>Afficher plus</button>
+                  <button className='display' onClick={togglePopup}>Afficher plus</button>
                   <button className='copy' onClick={()=> duclicate(item.id)}>Dupliquer</button>
-                  <button className='delete'>supprimer</button>
+                  <button className='delete' onClick={() => deleteProject(item.id)}>supprimer</button> 
+              <button className='export' onClick={() => exportProject(item.id)}>Extraire</button> 
                 </li>
               );
             })}
