@@ -24,7 +24,8 @@ const ListProject = () => {
             {data.map((item, index) => {
               return (
                 <li key={index} className="list">
-                {item.name}
+                  <li>Id : #{item.id}</li>
+                  <li>Name project : {item.name}</li>
                 <button className='copy'>Copier</button>
                 <button className='delete'>supprimer</button>
                 </li>
