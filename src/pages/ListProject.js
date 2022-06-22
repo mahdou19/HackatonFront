@@ -15,7 +15,7 @@ const ListProject = () => {
   
 
   const togglePopup = (id) => {
-   
+    console.log(id);
     setSelectedId(id)
     setIsOpen(!isOpen)
   }
@@ -42,7 +42,6 @@ const ListProject = () => {
           JSON.stringify(project)
         )}`;
         link.download = `${project.name}.json`;
-
         link.click();
       })
   }
@@ -50,15 +49,15 @@ const ListProject = () => {
 
 const duclicate =(id)=>{
 
-fetch (`/project/${id}/copy`).then(
-res=>res.json()
-).then(
-  data =>{
-  data =>data.projects
-  setData(data)
-  navigate('/projects');
-}
-)
+    fetch (`/project/${id}/copy`).then(
+    res=>res.json()
+    ).then(
+      data =>{
+      data =>data.projects
+      setData(data)
+      navigate('/');
+    }
+    )
 }
 
  useEffect(() => {
@@ -84,7 +83,7 @@ res=>res.json()
                 <li key={index} className="list">
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
-                  <button className='display' onClick={togglePopup}>Afficher plus</button>
+                  <button className='display' onClick={()=>togglePopup(item.id)}>Afficher plus</button>
                   <button className='copy' onClick={()=> duclicate(item.id)}>Dupliquer</button>
                   <button className='delete' onClick={() => deleteProject(item.id)}>supprimer</button> 
               <button className='export' onClick={() => exportProject(item.id)}>Extraire</button> 

@@ -7,12 +7,13 @@ function PopUp({id, handleClose}){
    
 
     useEffect(() => {
-        fetch (`/project/${id}`).then( 
+        fetch(`/project/${id}`).then( 
           res => res.json()
         ).then(
           data => { 
             setData(data)
-            console.log(data);    
+            console.log(data);
+              
           }
         )
        }, []);
@@ -27,20 +28,39 @@ function PopUp({id, handleClose}){
                                 <h1 onClick={handleClose} className="close">X</h1>
                             </div>
                             <div>
-                            <ul className='list-project'>
-                                <li> Name creator : {data.creator}</li>
+                            <ul className='list-project'><h2>Project</h2>
+                                <li> Name creator : {data.creator}</li> 
+                                <li> Project Name : {data.name}</li>
                                 <li> Description : {data.description}</li>
-                                {/* <ul className='list-project'><h2>Jobs</h2>
+                                <li>Job count : {data.jobsCount}</li>
+                                <li>Job count : {data.status}</li>
+                                <ul className='list-project'><h2>Jobs</h2>
                                 {data?.jobs?.map((item, index) => {
+                                    
                                     return (
                                         <li className='index'>
                                             <li>Job name : {item.name}</li>
                                             <li>Job creation date : {item.creationDate}</li>
-                                            
+                                            <ul className='list-project'><h2>Jobs Versions</h2>
+                                        {item?.versions?.map((item, index) => {
+                                            console.log(item);
+                                            return (
+                                                <li className='index'>
+                                                    <li>Job name : {item.commandLine}</li>
+                                                    <li>Job creation date : {item.creationDate}</li>
+                                                </li>
+                                    
+                                            )})}    
+                                    
+                                    </ul>
                                         </li>
                                         
+                                        
+                                        
                                     )})}    
-                                    </ul> */}
+                                    
+                                    </ul>
+                                   
                             </ul>         
                             </div>
                         </div>
