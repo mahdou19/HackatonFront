@@ -67,6 +67,18 @@
   text-align: center;
     
   }
+  .export {
+    background-color: #e2cb19;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 7px;
+    align-items: center;
+  text-align: center;
+  }
   .new-project    {
     margin: 30px;
 
