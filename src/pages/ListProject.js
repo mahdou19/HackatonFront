@@ -1,16 +1,20 @@
 import React, {useState,useEffect } from 'react'
 import '../styles/List-project.css'
 import { useNavigate } from 'react-router-dom';
+import PopUp from './PopUpProject';
 
 const ListProject = () => {
   const navigate = useNavigate();
   const btn1_Click = () => {
     navigate('/create-project');
   };
-  const btn2_Click = () => {
-    navigate('/info-project');
-  };
+  
   const [data, setData] = useState([{}]);
+  const [isOpen, setIsOpen] = useState(false)
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen)
+}
 
  useEffect(() => {
   fetch ("/projects").then(
@@ -34,12 +38,18 @@ const ListProject = () => {
                 <li key={index} className="list">
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
-                  <button className='display' onClick={btn2_Click}>Afficher plus</button>
+                  <button className='display'  onClick={togglePopup}>Afficher plus</button>
                   <button className='copy'>Dupliquer</button>
                   <button className='delete'>supprimer</button>
                 </li>
               );
             })}
+             {isOpen && (
+                <PopUp
+                    handleClose={togglePopup}
+                    isOpen={isOpen}
+                />
+            )}
           </ul>
     </div>
   )
