@@ -17,14 +17,15 @@ const ListProject = () => {
 }
 
 
-const duclicate =()=>{
+const duclicate =(id)=>{
 
-fetch ("/project/${id}/copy").then(
+fetch (`/project/${id}/copy`).then(
 res=>res.json()
 ).then(
   data =>{
   data =>data.projects
   setData(data)
+  navigate('/projects');
 }
 )
 }
@@ -52,7 +53,7 @@ res=>res.json()
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
                   <button className='display'  onClick={togglePopup}>Afficher plus</button>
-                  <button className='copy' onClick={duclicate}>Dupliquer</button>
+                  <button className='copy' onClick={()=> duclicate(item.id)}>Dupliquer</button>
                   <button className='delete'>supprimer</button>
                 </li>
               );
