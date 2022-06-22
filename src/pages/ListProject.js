@@ -11,8 +11,11 @@ const ListProject = () => {
   
   const [data, setData] = useState([{}]);
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedId, setSelectedId] = useState('')
+  
 
-  const togglePopup = () => {
+  const togglePopup = (id) => {
+    setSelectedId(id)
     setIsOpen(!isOpen)
 }
 
@@ -23,7 +26,7 @@ const ListProject = () => {
     data => {
         data = data.projects
         setData(data)
-        console.log(data);
+       
     }
   )
  }, []);
@@ -38,7 +41,7 @@ const ListProject = () => {
                 <li key={index} className="list">
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
-                  <button className='display'  onClick={togglePopup}>Afficher plus</button>
+                  <button className='display'  onClick={() => togglePopup(item.id)}>Afficher plus</button>
                   <button className='copy'>Dupliquer</button>
                   <button className='delete'>supprimer</button>
                 </li>
@@ -46,6 +49,7 @@ const ListProject = () => {
             })}
              {isOpen && (
                 <PopUp
+                    id={selectedId}
                     handleClose={togglePopup}
                     isOpen={isOpen}
                 />
