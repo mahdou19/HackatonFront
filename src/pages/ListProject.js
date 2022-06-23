@@ -47,7 +47,7 @@ const ListProject = () => {
   }
 
 
-const duclicate =(id)=>{
+const duplicate =(id)=>{
 
     fetch (`/project/${id}/copy`).then(
     res=>res.json()
@@ -84,7 +84,7 @@ const duclicate =(id)=>{
                   <li>Id : #{item.id}</li>
                   <li>Name project : {item.name}</li>
                   <button className='display' onClick={()=>togglePopup(item.id)}>Afficher plus</button>
-                  <button className='copy' onClick={()=> duclicate(item.id)}>Dupliquer</button>
+                  <button className='copy' onClick={()=> duplicate(item.id)}>Dupliquer</button>
                   <button className='delete' onClick={() => deleteProject(item.id)}>supprimer</button> 
               <button className='export' onClick={() => exportProject(item.id)}>Extraire</button> 
                 </li>
