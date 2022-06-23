@@ -33,7 +33,7 @@ function PopUp({id, handleClose}){
                                 <li> Project Name : {data.name}</li>
                                 <li> Description : {data.description}</li>
                                 <li>Job count : {data.jobsCount}</li>
-                                <li>Job count : {data.status}</li>
+                                <li>Job status : {data.status}</li>
                                 <ul className='list-project'><h2>Jobs</h2>
                                 {data?.jobs?.map((item, index) => {
                                     
@@ -41,12 +41,12 @@ function PopUp({id, handleClose}){
                                         <li className='index'>
                                             <li>Job name : {item.name}</li>
                                             <li>Job creation date : {item.creationDate}</li>
-                                            <ul className='list-project'><h2>Jobs Versions</h2>
+                                            <ul className='list-project'><h4>Jobs Versions</h4>
                                         {item?.versions?.map((item, index) => {
                                             console.log(item);
                                             return (
                                                 <li className='index'>
-                                                    <li>Job name : {item.commandLine}</li>
+                                                    <li>Job commandLine : {item.commandLine}</li>
                                                     <li>Job creation date : {item.creationDate}</li>
                                                 </li>
                                     
